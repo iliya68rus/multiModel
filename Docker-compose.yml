@@ -1,0 +1,16 @@
+services:
+  app1:
+    build:
+      context: .
+      dockerfile: app1/Dockerfile
+    ports:
+      - "8080:8081"
+    environment:
+      - app2.host=http://app2:8082
+    depends_on:
+      - app2
+
+  app2:
+    build:
+      context: .
+      dockerfile: app2/Dockerfile
